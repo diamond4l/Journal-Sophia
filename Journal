@@ -1,0 +1,92 @@
+START PROGRAM
+
+INITIALIZE VARIABLES:
+    total_games = 0
+    total_wins = 0
+    total_losses = 0
+    bet_amounts = []  // List to hold betting amounts
+
+GET USER INPUT:
+    PRINT "How many games do you want to play?"
+    INPUT games_to_play
+
+    FOR i FROM 1 TO games_to_play DO:
+        PRINT "Enter your bet for game", i
+        INPUT bet_amount
+        APPEND bet_amount TO bet_amounts
+
+SIMULATE GAMES:
+    FOR each bet IN bet_amounts DO:
+        SET outcome = RANDOM CHOICE FROM ["win", "lose", "draw"]
+        IF outcome == "win" THEN:
+            INCREMENT total_wins by 1
+        ELSE IF outcome == "lose" THEN:
+            INCREMENT total_losses by 1
+        ENDIF
+    ENDFOR
+
+    total_games = total_wins + total_losses
+
+CALCULATE WINNING PERCENTAGE:
+    IF total_games > 0 THEN:
+        winning_percentage = (total_wins / total_games) * 100
+    ELSE:
+        winning_percentage = 0
+    ENDIF
+
+GENERATE SUMMARY REPORT:
+    PRINT "Summary Report:"
+    PRINT "Total games played:", total_games
+    PRINT "Total wins:", total_wins
+    PRINT "Total losses:", total_losses
+    PRINT "Winning percentage:", winning_percentage
+
+DISPLAY EXAMPLE SCENARIOS:
+    PRINT "Example 1: User plays 5 games with bets [10, 15, 20, 10, 5]"
+    PRINT "Summary: Total games = 5, Wins = 3, Losses = 2, Winning percentage = 60%"
+    PRINT "Example 2: User plays 10 games with bets [20] * 10"
+    PRINT "Summary: Total games = 10, Wins = 4, Losses = 6, Winning percentage = 40%"
+    PRINT "Example 3: User plays 3 games with bets [50, 30, 20]"
+    PRINT "Summary: Total games = 3, Wins = 1, Losses = 2, Winning percentage = 33.3%"
+
+PROMPT TO PLAY AGAIN:
+    PRINT "Would you like to play again? (yes/no)"
+    INPUT play_again
+    IF play_again == "yes" THEN:
+        GO BACK TO step GET USER INPUT
+    ELSE:
+        PRINT "Thank you for playing!"
+    ENDIF
+
+END PROGRAM
+
+•	total_games = total_wins + total_losses
+•  Calculate Winning Percentage:
+•	IF total_games > 0:
+o	winning_percentage = (total_wins / total_games) * 100
+•	ELSE:
+o	winning_percentage = 0
+•  Generate Summary Report:
+•	Print "Summary Report:"
+•	Print "Total games played:", total_games
+•	Print "Total wins:", total_wins
+•	Print "Total losses:", total_losses
+•	Print "Winning percentage:", winning_percentage
+•  Display Example Scenarios:
+•	Example 1:
+o	User plays 5 games with bets [10, 15, 20, 10, 5]
+o	Summary: Total games = 5, Wins = 3, Losses = 2, Winning percentage = 60%
+•	Example 2:
+o	User plays 10 games with bets [20] * 10
+o	Summary: Total games = 10, Wins = 4, Losses = 6, Winning percentage = 40%
+•	Example 3:
+o	User plays 3 games with bets [50, 30, 20]
+o	Summary: Total games = 3, Wins = 1, Losses = 2, Winning percentage = 33.3%
+•  Prompt to Play Again:
+•	Print "Would you like to play again? (yes/no)"
+•	Input play_again
+•	IF play_again == "yes":
+o	Go back to step 2
+•	ELSE:
+o	Print "Thank you for playing!"
+•  End Program
